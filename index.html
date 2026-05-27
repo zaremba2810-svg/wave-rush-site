@@ -3,267 +3,580 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WAVE RUSH — водные развлечения</title>
+  <title>MALÉA Resortwear</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #081f27;
+      --bg-deep: #06161c;
+      --bg-soft: #0d2e39;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --white: #f8f8f5;
+      --muted: rgba(248, 248, 245, 0.72);
+      --accent: #63e7db;
+      --accent-soft: #98fff4;
+      --pink: #ff9fc5;
+      --gold: #f2d3a0;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+      --radius: 28px;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #061923;
-      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(99, 231, 219, 0.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(255, 159, 197, 0.10), transparent 24%),
+        linear-gradient(180deg, #09232c 0%, #071a21 45%, #061218 100%);
+      color: var(--white);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
-    .hero {
-      min-height: 100vh;
-      padding: 40px 8%;
-      background:
-        linear-gradient(rgba(0, 18, 28, 0.65), rgba(0, 18, 28, 0.85)),
-        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .container {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(7, 24, 31, 0.58);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .nav {
-      position: absolute;
-      top: 30px;
-      left: 8%;
-      right: 8%;
+      min-height: 82px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 2px;
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: var(--accent-soft);
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
-      font-size: 15px;
-    }
-
-    .nav-links a {
-      opacity: 0.85;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: #42e8f4;
-    }
-
-    .hero-content {
-      max-width: 760px;
-      margin-top: 80px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 10px 18px;
-      border: 1px solid rgba(255,255,255,0.35);
-      border-radius: 999px;
-      margin-bottom: 24px;
-      font-size: 14px;
-      letter-spacing: 1px;
-      backdrop-filter: blur(10px);
-    }
-
-    h1 {
-      font-size: clamp(44px, 8vw, 92px);
-      line-height: 0.95;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-    }
-
-    .hero p {
-      font-size: 21px;
-      max-width: 620px;
-      margin-bottom: 36px;
-      color: #d7f8ff;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
+      gap: 28px;
       flex-wrap: wrap;
     }
 
-    .btn {
-      padding: 16px 26px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: 0.3s;
-      display: inline-block;
+    .nav-links a {
+      color: var(--muted);
+      font-size: 15px;
+      transition: 0.3s ease;
     }
 
-    .btn-primary {
-      background: #42e8f4;
-      color: #021014;
+    .nav-links a:hover {
+      color: var(--white);
     }
 
-    .btn-primary:hover {
-      background: #ffffff;
-      transform: translateY(-3px);
+    .hero {
+      padding: 56px 0 90px;
     }
 
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.45);
-      color: #ffffff;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.15);
-      transform: translateY(-3px);
-    }
-
-    section {
-      padding: 90px 8%;
-    }
-
-    .section-title {
-      font-size: clamp(32px, 5vw, 56px);
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
-
-    .section-subtitle {
-      color: #aee9f2;
-      font-size: 19px;
-      max-width: 700px;
-      margin-bottom: 46px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 28px;
-      padding: 30px;
-      min-height: 260px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      background: rgba(255,255,255,0.11);
-    }
-
-    .card h3 {
-      font-size: 25px;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      color: #d2eef3;
-      margin-bottom: 22px;
-    }
-
-    .price {
-      font-size: 24px;
-      font-weight: 800;
-      color: #42e8f4;
-    }
-
-    .video-block {
-      background:
-        linear-gradient(rgba(0, 14, 22, 0.8), rgba(0, 14, 22, 0.8)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
+    .hero-box {
       border-radius: 36px;
-      padding: 60px;
+      padding: 26px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 30px;
       align-items: center;
     }
 
-    .video-block h2 {
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 1.05;
-      margin-bottom: 20px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--accent-soft);
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
-    .video-block p {
-      color: #d7f8ff;
-      font-size: 18px;
-      margin-bottom: 28px;
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(62px, 10vw, 122px);
+      line-height: 0.9;
+      margin-bottom: 18px;
+      letter-spacing: -1.8px;
     }
 
-    .program {
+    .hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.3s ease;
+      min-width: 180px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #08242e;
+      box-shadow: 0 12px 28px rgba(99, 231, 219, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.02);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 8px;
     }
 
-    .step {
-      padding: 24px;
-      border-radius: 24px;
-      background: rgba(66, 232, 244, 0.08);
-      border: 1px solid rgba(66, 232, 244, 0.22);
+    .stat {
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
     }
 
-    .step span {
+    .stat strong {
       display: block;
-      color: #42e8f4;
-      font-size: 30px;
-      font-weight: 800;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 720px;
+      border-radius: 32px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+    }
+
+    .hero-visual img {
+      height: 100%;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+      padding: 18px 20px;
+      border-radius: 24px;
+      background: rgba(7, 24, 31, 0.45);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-badge small {
+      display: block;
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .hero-badge strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .hero-badge span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section-head {
+      margin-bottom: 34px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 0.95;
+      max-width: 680px;
+    }
+
+    .section-head p {
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .image-card,
+    .text-card {
+      border-radius: 30px;
+      overflow: hidden;
+    }
+
+    .image-card img {
+      height: 100%;
+      min-height: 540px;
+    }
+
+    .text-card {
+      padding: 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .text-card .label {
+      color: var(--pink);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .text-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 0.98;
+    }
+
+    .text-card p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: var(--white);
+    }
+
+    .feature span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .product-card img {
+      height: 420px;
+    }
+
+    .product-info {
+      padding: 24px;
+    }
+
+    .product-info small {
+      display: inline-block;
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      font-size: 12px;
       margin-bottom: 10px;
     }
 
-    .contacts {
-      background: #031016;
+    .product-info h4 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .product-info p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-weight: 800;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .full-banner {
+      margin-top: 28px;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      min-height: 500px;
+      background: #0d2630;
+      box-shadow: var(--shadow);
+    }
+
+    .full-banner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .full-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(4,17,22,0.80) 0%, rgba(4,17,22,0.35) 55%, rgba(4,17,22,0.45) 100%);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      padding: 60px;
+      max-width: 620px;
+    }
+
+    .banner-content h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 0.94;
+      margin-bottom: 18px;
+    }
+
+    .banner-content p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .contact-box {
+      border-radius: 34px;
+      padding: 50px;
+      background:
+        linear-gradient(135deg, rgba(99, 231, 219, 0.11), rgba(255, 159, 197, 0.09)),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
       text-align: center;
     }
 
-    .contact-links {
+    .contact-box h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: 0.95;
+      margin-bottom: 14px;
+    }
+
+    .contact-box p {
+      max-width: 700px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .socials {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 34px;
+      gap: 14px;
+      margin-top: 24px;
     }
 
-    .footer {
-      padding: 28px 8%;
-      background: #020b0f;
-      color: #8fb8bf;
+    .socials a {
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      transition: 0.3s ease;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .socials a:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    footer {
+      padding: 34px 0 44px;
+      color: rgba(248,248,245,0.55);
       text-align: center;
       font-size: 14px;
     }
 
-    @media (max-width: 900px) {
-      .cards,
-      .program,
-      .video-block {
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .editorial-grid,
+      .collection-grid {
         grid-template-columns: 1fr;
       }
 
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .full-banner {
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 760px) {
       .nav {
-        position: static;
-        margin-bottom: 60px;
+        min-height: 72px;
       }
 
       .nav-links {
@@ -271,148 +584,243 @@
       }
 
       .hero {
-        padding-top: 30px;
+        padding: 30px 0 70px;
       }
 
-      .video-block {
-        padding: 34px;
+      .hero-box {
+        padding: 18px;
+      }
+
+      .hero h1 {
+        font-size: 68px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .text-card,
+      .banner-content,
+      .contact-box {
+        padding: 28px;
+      }
+
+      .product-card img,
+      .image-card img {
+        min-height: auto;
+        height: auto;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <header class="hero">
-    <nav class="nav">
-      <div class="logo">WAVE RUSH</div>
-      <div class="nav-links">
-        <a href="#activities">Развлечения</a>
-        <a href="#program">Программа</a>
-        <a href="#contacts">Контакты</a>
-      </div>
-    </nav>
-
-    <div class="hero-content">
-      <div class="tag">вейксерфинг · сапы · яхты · летний вайб</div>
-      <h1>Поймай свою волну</h1>
-      <p>
-        Яркие водные приключения для тех, кто хочет провести день красиво:
-        вейксерфинг, прогулки на сапах, катание на катере и закаты на воде.
-      </p>
-
-      <div class="buttons">
-        <a class="btn btn-primary" href="https://t.me/waverush_club" target="_blank">Записаться в Telegram</a>
-        <a class="btn btn-secondary" href="#activities">Смотреть программы</a>
-      </div>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="brand">MALÉA <span>Resortwear</span></a>
+        <div class="nav-links">
+          <a href="#story">История</a>
+          <a href="#collection">Коллекция</a>
+          <a href="#campaign">Кампейн</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+      </nav>
     </div>
-  </header>
+  </div>
 
-  <section id="activities">
-    <h2 class="section-title">Что можно попробовать</h2>
-    <p class="section-subtitle">
-      Выберите формат под настроение: активный спорт, расслабленная прогулка или красивый день на воде с друзьями.
-    </p>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-box">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Maldives mood · tropical print · limited drop</div>
+            <h1>MALÉA <span>Capsule</span></h1>
+            <p>
+              Лёгкий resortwear для отпусков, закатов и идеальных утренних выходов к океану.
+              Тропические принты, струящиеся ткани и ощущение роскошного побега на Мальдивы.
+            </p>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Вейксерфинг</h3>
-        <p>
-          Катание за катером на искусственной волне. Подходит новичкам:
-          инструктор помогает встать на доску и почувствовать баланс.
-        </p>
-        <div class="price">от 4 500 ₽</div>
-      </div>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#collection">Смотреть коллекцию</a>
+              <a class="btn btn-secondary" href="https://t.me/malea_resortwear" target="_blank">Написать в Telegram</a>
+            </div>
 
-      <div class="card">
-        <h3>SUP-прогулка</h3>
-        <p>
-          Спокойная прогулка на сапах по воде. Отличный вариант для красивых фото,
-          отдыха и лёгкой активности.
-        </p>
-        <div class="price">от 1 900 ₽</div>
-      </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <strong>Limited Drop</strong>
+                <span>Капсульная коллекция в духе luxury resort</span>
+              </div>
+              <div class="stat">
+                <strong>Vacation Palette</strong>
+                <span>Коралловые, песочные и морские оттенки</span>
+              </div>
+              <div class="stat">
+                <strong>Fluid Silhouettes</strong>
+                <span>Накидки, кимоно и невесомые драпировки</span>
+              </div>
+            </div>
+          </div>
 
-      <div class="card">
-        <h3>Катер на компанию</h3>
-        <p>
-          Прогулка на катере для друзей, дня рождения или романтического вечера.
-          Можно выбрать маршрут и время.
-        </p>
-        <div class="price">от 9 000 ₽</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="video-block">
-      <div>
-        <h2>Посмотри атмосферу WAVE RUSH</h2>
-        <p>
-          Видео, эмоции, вода, солнце и ощущение маленького отпуска прямо в городе.
-          Кнопка ниже ведёт на тестовый YouTube-ролик.
-        </p>
-        <a class="btn btn-primary" href="https://www.youtube.com/" target="_blank">Смотреть видео</a>
-      </div>
-
-      <div>
-        <p>
-          Этот блок можно заменить на реальную ссылку YouTube, портфолио, шоурил,
-          фотографии с мероприятий или форму записи.
-        </p>
+          <div class="hero-visual">
+            <img src="look1.jpg" alt="MALÉA Resortwear main campaign">
+            <div class="hero-badge">
+              <small>Signature piece</small>
+              <strong>Tropical Aura Kaftan</strong>
+              <span>Мягкий силуэт, воздушный крой и принт, вдохновлённый экзотическими листьями.</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="program">
-    <h2 class="section-title">Как проходит день</h2>
-    <p class="section-subtitle">
-      Простая структура, чтобы гость понимал, что его ждёт после записи.
-    </p>
-
-    <div class="program">
-      <div class="step">
-        <span>01</span>
-        <h3>Бронь</h3>
-        <p>Вы пишете нам в Telegram и выбираете дату, формат и количество гостей.</p>
+  <section id="story" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Luxury resortwear с атмосферой тёплого острова</h2>
+        <p>
+          MALÉA — это вымышленный бренд одежды для отпусков: для женщин, которые любят мягкую роскошь,
+          красивую подачу, лёгкость ткани и ощущение идеального slow-luxury момента.
+        </p>
       </div>
 
-      <div class="step">
-        <span>02</span>
-        <h3>Инструктаж</h3>
-        <p>Перед стартом инструктор объясняет безопасность и помогает подготовиться.</p>
-      </div>
+      <div class="editorial-grid">
+        <div class="image-card glass">
+          <img src="look3.png" alt="Editorial campaign image">
+        </div>
 
-      <div class="step">
-        <span>03</span>
-        <h3>Вода</h3>
-        <p>Вы выходите на воду, катаетесь, отдыхаете и наслаждаетесь моментом.</p>
-      </div>
+        <div class="text-card glass">
+          <div class="label">Brand story</div>
+          <h3>Одежда, которая выглядит как отпуск мечты</h3>
+          <p>
+            Здесь важны не только вещи, но и ощущение: тёплый ветер, белый песок, мягкий свет,
+            бирюзовая вода и расслабленная уверенность в себе. MALÉA создана как визуальная фантазия
+            о безупречном tropical escape.
+          </p>
 
-      <div class="step">
-        <span>04</span>
-        <h3>Фото</h3>
-        <p>После прогулки можно получить фото и видео для соцсетей.</p>
+          <div class="feature-list">
+            <div class="feature">
+              <strong>Airy fabrics</strong>
+              <span>Невесомые материалы и пластичный силуэт</span>
+            </div>
+            <div class="feature">
+              <strong>Statement prints</strong>
+              <span>Яркие тропические узоры и luxury-palette</span>
+            </div>
+            <div class="feature">
+              <strong>Elegant ease</strong>
+              <span>Шик без перегруза, комфорт без потери статуса</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contacts" class="contacts">
-    <h2 class="section-title">Готовы на воду?</h2>
-    <p class="section-subtitle" style="margin-left:auto; margin-right:auto;">
-      Напишите нам, чтобы выбрать дату, формат отдыха и забронировать своё приключение.
-    </p>
+  <section id="collection" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Капсульная коллекция</h2>
+        <p>
+          Несколько ключевых образов, вокруг которых строится весь вайб бренда:
+          от плавных домашних утренних моментов до эффектного выхода к океану.
+        </p>
+      </div>
 
-    <div class="contact-links">
-      <a class="btn btn-primary" href="https://t.me/waverush_club" target="_blank">Telegram</a>
-      <a class="btn btn-secondary" href="https://instagram.com/waverush.club" target="_blank">Instagram</a>
-      <a class="btn btn-secondary" href="https://vk.com/waverushclub" target="_blank">VK</a>
-      <a class="btn btn-secondary" href="mailto:hello@waverush.ru">Email</a>
+      <div class="collection-grid">
+        <div class="product-card glass">
+          <img src="look1.jpg" alt="Resortwear look one">
+          <div class="product-info">
+            <small>Best Seller</small>
+            <h4>Tropical Aura Kaftan</h4>
+            <p>Воздушное платье-кимоно с открытой линией плеч и мягкой романтичной посадкой.</p>
+            <div class="product-meta">
+              <div class="price">18 900 ₽</div>
+              <div class="chip">Limited edition</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card glass">
+          <img src="look2.jpg" alt="Detail shot">
+          <div class="product-info">
+            <small>Signature Detail</small>
+            <h4>Sunlit Shoulder Print</h4>
+            <p>Крупный акцент на фактуру ткани, оттенки закатного тропического сада и деликатную женственность.</p>
+            <div class="product-meta">
+              <div class="price">12 500 ₽</div>
+              <div class="chip">Soft chiffon</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card glass">
+          <img src="look3.png" alt="Editorial resort shot">
+          <div class="product-info">
+            <small>Campaign Mood</small>
+            <h4>Island Muse Cover-Up</h4>
+            <p>Длинная прозрачная накидка для выходов к пляжу, фотосессий и эффектных resort-образов.</p>
+            <div class="product-meta">
+              <div class="price">21 400 ₽</div>
+              <div class="chip">Maldives mood</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="campaign" class="full-banner">
+        <img src="look1.jpg" alt="Campaign visual">
+        <div class="banner-content">
+          <h3>Wear the sunset. Live the island fantasy.</h3>
+          <p>
+            MALÉA говорит языком отдыха, света и уверенной красоты. Это не просто одежда —
+            это настроение private villa, palm shadows и красивой жизни у воды.
+          </p>
+          <a class="btn btn-primary" href="https://instagram.com/malea.resortwear" target="_blank">Смотреть Instagram</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="footer">
-    © 2026 WAVE RUSH. Тестовый учебный лендинг. Все контакты вымышленные.
+  <section id="contacts" class="section">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Let the resort mood begin</h2>
+        <p>
+          Свяжитесь с брендом, чтобы оформить заказ, получить lookbook или обсудить коллаборацию.
+          Все контакты ниже — тестовые и вымышленные, только для демонстрации сайта.
+        </p>
+
+        <div class="buttons" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://t.me/malea_resortwear" target="_blank">Telegram</a>
+          <a class="btn btn-secondary" href="https://instagram.com/malea.resortwear" target="_blank">Instagram</a>
+        </div>
+
+        <div class="socials">
+          <a href="https://vk.com/malea.resortwear" target="_blank">VK</a>
+          <a href="mailto:hello@malearesortwear.com">Email</a>
+          <a href="https://wa.me/79999999999" target="_blank">WhatsApp</a>
+          <a href="#">Lookbook PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 MALÉA Resortwear · Demo landing page for GitHub Pages · All contacts are fictional
   </footer>
 
 </body>
